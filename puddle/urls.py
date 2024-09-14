@@ -20,13 +20,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from core.views import index, contact
-
 urlpatterns = [
     
     path("admin/", admin.site.urls),
-    path('',index, name='index'),   #leaving the path empty as this is front page
+    path('',include('core.urls')),   #leaving the path empty as this is front page
     path('items/', include('item.urls')),
-    path('contact/',contact, name='contact'),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
 # i added this static 
